@@ -32,7 +32,7 @@ namespace StockManagementSystemWebAPP.UI
             Company aCompany = new Company();
             aCompany.Name = name;
 
-            manager.Save(aCompany);
+           messageLabel.Text=manager.Save(aCompany);
             PageLoadPreview();
         }
     }

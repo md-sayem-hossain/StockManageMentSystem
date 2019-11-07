@@ -112,6 +112,7 @@
     <asp:Button ID="DamageButton" runat="server" Text="Damage" OnClick="DamageButton_Click1" /><br/>
     <asp:Button ID="LostButton" runat="server" Text="Lost" Width="94px" OnClick="LostButton_Click" />
     <a href="HomeUI.aspx">HomeUI.aspx</a>
+         <br />
          <asp:Label ID="messagelable" runat="server" Text="Label"></asp:Label>
      </form>
 </body>

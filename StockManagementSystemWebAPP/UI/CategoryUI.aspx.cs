@@ -25,45 +25,47 @@ namespace StockManagementSystemWebAPP.UI
         private void PageLoadPreview()
         {
             List<Category> BookList = categoryManager.AllCategory();
-            //categoryGridview.DataSource = BookList;
+            categoryGridview.DataSource = BookList;
             categoryGridview.DataBind(); 
            // show();
         }
         
         protected void SaveButton_Click(object sender, EventArgs e)
         {
-            int number = 1;
-            ButtonClick(number);
-        }
-
-        public void ButtonClick(int number)
-        {
-            if (number == 1)
-            {
+           
                 string name = categoryTextBox.Text;
                 Category aCategory = new Category();
                 aCategory.Name = name;
 
-                categoryManager.Save(aCategory);
-                
-            }
-            else if (number == 2)
-            {
-                GridViewRow gr = categoryGridview.SelectedRow;
-                categoryTextBox.Text = gr.Cells[2].Text;
-                string name = categoryTextBox.Text;
-                string id = (gr.Cells[1]).Text;
-                SaveButton.Text = "Update";
+                messagelabel.Text=categoryManager.Save(aCategory);
+                PageLoadPreview();
 
-                messagelabel.Text = categoryManager.Update(Convert.ToInt32(id), name);
-            }
-            PageLoadPreview();
+        }
+
+        public void ButtonClick(int number)
+        {
+            //if (number == 1)
+            //{
+                
+                
+            //}
+            //else if (number == 2)
+            //{
+            //    GridViewRow gr = categoryGridview.SelectedRow;
+            //    categoryTextBox.Text = gr.Cells[2].Text;
+            //    string name = categoryTextBox.Text;
+            //    string id = (gr.Cells[1]).Text;
+            //    SaveButton.Text = "Update";
+
+            //    messagelabel.Text = categoryManager.Update(Convert.ToInt32(id), name);
+            //}
+            //PageLoadPreview();
         }
 
         protected void categoryGridview_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int number = 2;
-            ButtonClick(number);
+            //int number = 2;
+            //ButtonClick(number);
         }
 
 

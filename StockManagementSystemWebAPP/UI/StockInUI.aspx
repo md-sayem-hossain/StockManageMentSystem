@@ -67,7 +67,7 @@
      </tr>
      <tr>
       <td colspan="2">
-       <asp:Label ID="lbl_display" runat="server"></asp:Label>
+       <asp:Label ID="messageLabel" runat="server"></asp:Label>
       </td>
      </tr>
     </table>

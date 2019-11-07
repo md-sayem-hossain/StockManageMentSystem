@@ -37,7 +37,11 @@
         
         
         
+
         <a href="HomeUI.aspx">HomeUI.aspx</a>
+
+
+        <asp:Label ID="messageLabel" runat="server" Text="Label"></asp:Label>
     </div>
     </form>
 </body>

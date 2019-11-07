@@ -46,7 +46,7 @@ namespace StockManagementSystemWebAPP.UI
 
             aItemClass.Reorder = Convert.ToInt32(reorderTextBox.Text);
 
-            aItemManager.Save(aItemClass);
+           messageLabel.Text=aItemManager.Save(aItemClass);
         }
     }
 }

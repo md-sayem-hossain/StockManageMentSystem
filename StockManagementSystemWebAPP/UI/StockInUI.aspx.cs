@@ -94,7 +94,7 @@ namespace StockManagementSystemWebAPP.UI
             StockInManager manager = new StockInManager();
             string display = manager.Save(prequantity,newquantity,id);
 
-            lbl_display.Text = display;
+            messageLabel.Text = display;
     }
 
 

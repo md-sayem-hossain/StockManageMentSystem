@@ -57,6 +57,32 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\datepicker.css" />
+    <Content Include="css\.DS_Store" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="css\style.css.map" />
+    <Content Include="fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\flaticon\backup.txt" />
+    <Content Include="fonts\flaticon\font\flaticon.css" />
+    <Content Include="fonts\flaticon\font\flaticon.html" />
+    <Content Include="fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="fonts\icomoon\icomoon.svg" />
+    <Content Include="js\.DS_Store" />
+    <Content Include="fonts\.DS_Store" />
+    <Content Include="fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\flaticon\.DS_Store" />
+    <Content Include="fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="fonts\flaticon\license\license.pdf" />
+    <Content Include="fonts\icomoon\.DS_Store" />
+    <Content Include="fonts\icomoon\icomoon.eot" />
+    <Content Include="fonts\icomoon\icomoon.ttf" />
+    <Content Include="fonts\icomoon\icomoon.woff" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -65,12 +91,34 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\animate.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\flexslider.css" />
+    <Content Include="css\icomoon.css" />
+    <Content Include="css\owl.carousel.min.css" />
+    <Content Include="css\owl.theme.default.min.css" />
+    <Content Include="css\style.css" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\datepickerjs.js" />
+    <Content Include="js\google_map.js" />
+    <Content Include="js\jquery.countTo.js" />
+    <Content Include="js\jquery.easing.1.3.js" />
+    <Content Include="js\jquery.flexslider-min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.waypoints.min.js" />
+    <Content Include="js\main.js" />
+    <Content Include="js\modernizr-2.6.2.min.js" />
+    <Content Include="js\owl.carousel.min.js" />
+    <Content Include="js\respond.min.js" />
+    <Content Include="js\sticky-kit.min.js" />
     <Content Include="UI\CategoryUI.aspx" />
     <Content Include="UI\CompanyUI.aspx" />
     <Content Include="UI\HomeUI.aspx" />
+    <Content Include="UI\ItemSamaryUI.aspx" />
     <Content Include="UI\ItemUI.aspx" />
     <Content Include="UI\StockInUI.aspx" />
     <Content Include="UI\StockOutUI.aspx" />
+    <Content Include="UI\ViewSalesUI.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -79,16 +127,22 @@
     <Compile Include="BLL\ItemManager.cs" />
     <Compile Include="BLL\StockInManager.cs" />
     <Compile Include="BLL\StockOutManager.cs" />
+    <Compile Include="BLL\SumurryManager.cs" />
+    <Compile Include="BLL\ViewSalesManager.cs" />
     <Compile Include="DAL\Gateway\CategoryGateway.cs" />
     <Compile Include="DAL\Gateway\CompanyGateway.cs" />
     <Compile Include="DAL\Gateway\ItemGateway.cs" />
     <Compile Include="DAL\Gateway\StockInGateWay.cs" />
     <Compile Include="DAL\Gateway\StockOutGateway.cs" />
+    <Compile Include="DAL\Gateway\SumurryGateway.cs" />
+    <Compile Include="DAL\Gateway\ViewSalesGateWay.cs" />
     <Compile Include="DAL\Model\Category.cs" />
     <Compile Include="DAL\Model\Company.cs" />
     <Compile Include="DAL\Model\ItemClass.cs" />
     <Compile Include="DAL\Model\StockIn.cs" />
     <Compile Include="DAL\Model\StockOUT.cs" />
+    <Compile Include="DAL\Model\SumurryModel.cs" />
+    <Compile Include="DAL\Model\ViewSalesModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\CategoryUI.aspx.cs">
       <DependentUpon>CategoryUI.aspx</DependentUpon>
@@ -111,6 +165,13 @@
     <Compile Include="UI\HomeUI.aspx.designer.cs">
       <DependentUpon>HomeUI.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\ItemSamaryUI.aspx.cs">
+      <DependentUpon>ItemSamaryUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\ItemSamaryUI.aspx.designer.cs">
+      <DependentUpon>ItemSamaryUI.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UI\ItemUI.aspx.cs">
       <DependentUpon>ItemUI.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -131,6 +192,13 @@
     </Compile>
     <Compile Include="UI\StockOutUI.aspx.designer.cs">
       <DependentUpon>StockOutUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ViewSalesUI.aspx.cs">
+      <DependentUpon>ViewSalesUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\ViewSalesUI.aspx.designer.cs">
+      <DependentUpon>ViewSalesUI.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

@@ -110,7 +110,6 @@ namespace StockManagementSystemWebAPP.UI
         }
 
 
-        private int i = 1;
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             int stockOutQuantity = Convert.ToInt32(StockInTextBox.Text);
@@ -119,12 +118,12 @@ namespace StockManagementSystemWebAPP.UI
             if (stockOutQuantity > availableQuantity)
             {
                 messagelable.Visible = true;
-                messagelable.Text = "Sorry StockOut Quantity Cannot Greater Then Available Quantity";
+                messagelable.Text = "Not Enough Quantity";
             }
             else if (stockOutQuantity == 0)
             {
                 messagelable.Visible = true;
-                messagelable.Text = "Sorry StockOut Quantity Cannot be 0";
+                messagelable.Text = "Quantity cannot be 0";
             }
             else
             {
@@ -138,7 +137,7 @@ namespace StockManagementSystemWebAPP.UI
                 aStockOut.AvailableQuantity = availableQuantity - stockOutQuantity;
                 aStockOut.StockOut_Value = stockOutQuantity;
 
-                aStockOut.StockOut_Id = i;
+                
 
                 if (ViewState["StockOutTB"] != null)
                 {
@@ -161,7 +160,7 @@ namespace StockManagementSystemWebAPP.UI
                         ViewState["StockOutTB"] = stockOutList;
                     }
 
-                    GridViewData(); i++;
+                    GridViewData();
                     
 
 
