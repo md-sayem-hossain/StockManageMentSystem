@@ -98,12 +98,12 @@
                                         <asp:Button ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" CssClass="btn btn-primary"/>
                                     </div>
                                     <div>
-                                        <asp:GridView ID="SalesGridView" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="SalesGridView_SelectedIndexChanged" CssClass="table">
+                                        <asp:GridView ID="SalesGridView" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="SalesGridView_SelectedIndexChanged" CssClass="table" HorizontalAlign="Justify">
                   
                                     <Columns>
             
                                         <asp:TemplateField HeaderText="SL">
-                                            <ItemTemplate>
+                                            <ItemTemplate >
                                                 <asp:Label ID="Label1" runat="server"><%#Eval("Id")%></asp:Label>
                                             </ItemTemplate>
 
@@ -125,6 +125,10 @@
                                         </asp:GridView>
                                     </div>
                                     <br/>
+                                    
+                                    
+                                    <br />
+                                    <asp:Button ID="pdfbutton" runat="server" Text="pdf" CssClass="btn btn-primary" OnClick="pdfbutton_Click"/>
                                 </form>
                                     <!--=======================================================-->
 
