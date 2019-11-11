@@ -85,13 +85,28 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
         }
 
 
-        public int Update(int id , string name)
+        //public int Update(int id, string name)
+        //{
+        //    SqlConnection connection = new SqlConnection(connectionString);
+        //    connection.Open();
+        //    string query = "UPDATE CategoryTB SET CategoryTB.CategoryName = @newname where Category.Id = '" + id + "'";
+        //    SqlCommand command = new SqlCommand(query, connection);
+        //    command.Parameters.AddWithValue("newname", name);
+        //    int rowAffect = command.ExecuteNonQuery();
+        //    connection.Close();
+
+        //    return rowAffect;
+        //}
+
+        public int UpdateCategory(string name, int id)
         {
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            string query = "UPDATE CategoryTB SET CategoryTB.CategoryName = @newname where Category.Id = '"+id+"'";
+            string query = "UPDATE CategoryTB SET CategoryTB.CategoryName = @newname where CategoryTB.Id = @id ";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("newname", name);
+            command.Parameters.AddWithValue("id", id);
+
             int rowAffect = command.ExecuteNonQuery();
             connection.Close();
 

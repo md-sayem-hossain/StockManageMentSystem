@@ -16,15 +16,16 @@ namespace StockManagementSystemWebAPP.BLL
         {
             if (Gateway.IsItemExist(aItemClass.Item_Name))
             {
-                return "Alredy exixts";
+                return "Item Already exixts";
             }
+           
 
             int Row = Gateway.SaveItem(aItemClass);
             if (Row > 0)
             {
                 return "save success";
             }
-            return "failed";
+            return "Item Save failed";
         }
         public List<ItemClass> Allitems()
         {

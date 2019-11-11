@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.EnterpriseServices.Internal;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,130 +15,118 @@ namespace StockManagementSystemWebAPP.UI
 {
     public partial class CompanyUI : System.Web.UI.Page
     {
-        CategoryManager categoryManager = new CategoryManager();
+        private CategoryManager categoryManager = new CategoryManager();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                Response.Redirect("LoginUI.aspx");
+            }
             PageLoadPreview();
-            SaveButton.Text = "Save";
-
+            UpdateButton.Visible = false;
+            SaveButton.Visible = true;
+            idlabel.Visible = false;
         }
 
         private void PageLoadPreview()
         {
             List<Category> BookList = categoryManager.AllCategory();
             categoryGridview.DataSource = BookList;
-            categoryGridview.DataBind(); 
-           // show();
+            categoryGridview.DataBind();
+            // show();
         }
-        
+
         protected void SaveButton_Click(object sender, EventArgs e)
         {
-           
-                string name = categoryTextBox.Text;
-                Category aCategory = new Category();
-                aCategory.Name = name;
 
-                messagelabel.Text=categoryManager.Save(aCategory);
+            string name = categoryTextBox.Text;
+            Category aCategory = new Category();
+            if (name.Length > 1)
+            {
+                aCategory.Name = name;
+                messagelabel.Text = categoryManager.Save(aCategory);
                 PageLoadPreview();
 
+            }
+            else
+            {
+                messagelabel.Text = "Category Cannot Be Empty";
+            }
+
         }
 
-        public void ButtonClick(int number)
+        protected void categoryGridview_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //if (number == 1)
-            //{
-                
-                
-            //}
-            //else if (number == 2)
-            //{
-            //    GridViewRow gr = categoryGridview.SelectedRow;
-            //    categoryTextBox.Text = gr.Cells[2].Text;
-            //    string name = categoryTextBox.Text;
-            //    string id = (gr.Cells[1]).Text;
-            //    SaveButton.Text = "Update";
 
-            //    messagelabel.Text = categoryManager.Update(Convert.ToInt32(id), name);
-            //}
-            //PageLoadPreview();
+            GridViewRow row = e.Row;
+
+            if (row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton _dblClickButton = row.FindControl("lnkBtnDblClk") as LinkButton;
+
+                string _jsDoubleClick = ClientScript.GetPostBackClientHyperlink(_dblClickButton, "");
+
+                e.Row.Attributes.Add("ondblclick", _jsDoubleClick);
+
+            }
         }
-
-        protected void categoryGridview_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //int number = 2;
-            //ButtonClick(number);
-        }
-
-
-
-
-
-
-
-
-
-
-
-        //protected void categoryGridview_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-
-        //    GridViewRow gr = categoryGridview.SelectedRow;
-        //    categoryTextBox.Text = gr.Cells[2].Text;
-        //    int id = Convert.ToInt32(gr.Cells[1]);
-        //    SaveButton.Text = "Update";
-
-        //    messagelabel.Text = categoryManager.Update(id,categoryTextBox.Text);
-        //}
-
+        Category aCategory = new Category();
        
+        protected void categoryGridview_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string name = "";
+            int id;
+            GridViewRow row = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+            
+            switch (e.CommandName)
+            {
 
-        //protected void categoryGridview_RowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+                case "clk": //"clk" is command name of linkButton Row click event handler
+
+                    categoryGridview.SelectedIndex = row.RowIndex;
+
+                    break;
+
+                case "dblClk"://"dblClk" is command name of linkButton Row Double click event handler.
+
+                    row.BackColor = System.Drawing.Color.Pink;
+                    categoryTextBox.Text = categoryGridview.Rows[row.RowIndex].Cells[1].Text;
+                    name = categoryGridview.Rows[row.RowIndex].Cells[1].Text;
+                    id = Convert.ToInt32(categoryGridview.Rows[row.RowIndex].Cells[0].Text);
+                    idlabel.Text = id.ToString();
+                    //SaveButton.Text = "Update";
+                    UpdateButton.Visible = true;
+                    SaveButton.Visible = false;
+                    break;
+                    
+                    //aCategory.Name = name;
+                    //aCategory.Id = id;
+                    //UpdateButton_Click(aCategory, e);
+
+            }
+        }
+        protected void UpdateButton_Click(object sender, EventArgs e)
+        {
+            string name = categoryTextBox.Text;
+            int id = Convert.ToInt32(idlabel.Text);
+            if (name.Length > 1)
+            {
+                messagelabel.Text = categoryManager.Update(name, id);
+                PageLoadPreview();
+
+            }
+            else
+            {
+                messagelabel.Text = "Category Cannot Be Empty";
+                categoryTextBox.Text = "";
+            }
+
+        }
+       
+        //public void update(a)
         //{
-        //    if (e.Row.RowType == DataControlRowType.DataRow)
-        //    {
-        //        e.Row.Attributes["ondblclick"] = Page.ClientScript.GetPostBackClientHyperlink(categoryGridview, "Edit$" + e.Row.RowIndex);
-        //        e.Row.Attributes["style"] = "cursor:pointer";
-        //    }
-        //}
-
-
-
-
-
-
-
-        //private void show()
-        //{
-        //    {
-        //        SqlConnection con = new SqlConnection("Server=DESKTOP-82FAJJ5;Database=StockDB;Integrated Security=True;");
-        //        string strSQL = "Select * from CategoryTB";
-        //        SqlDataAdapter dt = new SqlDataAdapter(strSQL, con);
-        //        DataSet ds = new DataSet();
-        //        dt.Fill(ds, "CategoryTB");
-        //        con.Close();
-        //        categoryGridview.DataSource = ds;
-        //        categoryGridview.DataBind();
-        //    }
-        //}
-
-        //protected void categoryGridview_RowEditing(object sender, GridViewEditEventArgs e)
-        //{
-        //    categoryGridview.EditIndex = e.NewEditIndex;
-        //    this.DataBind();
-        //    categoryGridview.Rows[e.NewEditIndex].Attributes.Remove("ondblclick");
-        //    categoryGridview.Columns[2].Visible = true;
-        //}
-        //protected void OnUpdate(object sender, EventArgs e)
-        //{
-        //    GridViewRow row = (sender as LinkButton).NamingContainer as GridViewRow;
-        //    string name = (row.Cells[0].Controls[0] as TextBox).Text;
-        //    string country = (row.Cells[1].Controls[0] as TextBox).Text;
-        //    DataTable dt = ViewState["dt"] as DataTable;
-        //    dt.Rows[row.RowIndex]["Name"] = name;
-        //    dt.Rows[row.RowIndex]["Country"] = country;
-        //    ViewState["dt"] = dt;
-        //    categoryGridview.EditIndex = -1;
-        //    this.DataBind();
+            
         //}
     }
 }

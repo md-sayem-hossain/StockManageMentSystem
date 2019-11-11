@@ -29,6 +29,10 @@ namespace StockManagementSystemWebAPP.UI
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                Response.Redirect("LoginUI.aspx");
+            }
             dictionary = new Dictionary<int, string>();
 
             if (!IsPostBack)
@@ -112,7 +116,7 @@ namespace StockManagementSystemWebAPP.UI
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
-            int stockOutQuantity = Convert.ToInt32(StockInTextBox.Text);
+            int stockOutQuantity = Convert.ToInt32(StockOutTextBox.Text);
             int availableQuantity = Convert.ToInt32(AvailabelQuantityTextBox.Text);
 
             if (stockOutQuantity > availableQuantity)

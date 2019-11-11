@@ -31,12 +31,17 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
             }
             else if (category!=null && company!=null)
             {
-                query = "SELECT  CompanyName ,CategoryName,Item_Name,Item_Quantity,Item_Reorder from ItemTB,CompanyTB,CategoryTB where ItemTB.Category_Id=CategoryTB.Id and CategoryTB.CategoryName='" + category + "' and ItemTB.Company_Id=CompanyTB.Id and  CompanyTB.CompanyName='" + company + "' and ItemTB.Category_Id=CategoryTB.Id";
+                query = "SELECT  CompanyName ,CategoryName,Item_Name,Item_Quantity,Item_Reorder from ItemTB," +
+                        "CompanyTB,CategoryTB where ItemTB.Category_Id=CategoryTB.Id and " +
+                        "CategoryTB.CategoryName='" + category + "' and ItemTB.Company_Id=CompanyTB.Id and " +
+                        " CompanyTB.CompanyName='" + company + "' and ItemTB.Category_Id=CategoryTB.Id";
 
             }
             else if (category!=null && company==null)
             {
-                query = "SELECT  CompanyName ,CategoryName,Item_Name,Item_Quantity,Item_Reorder from ItemTB,CompanyTB,CategoryTB where ItemTB.Category_Id=CategoryTB.Id and CategoryTB.CategoryName='" + category + "' and ItemTB.Company_Id=CompanyTB.Id";
+                query = "SELECT  CompanyName ,CategoryName,Item_Name,Item_Quantity,Item_Reorder from " +
+                        "ItemTB,CompanyTB,CategoryTB where ItemTB.Category_Id=CategoryTB.Id and " +
+                        "CategoryTB.CategoryName='" + category + "' and ItemTB.Company_Id=CompanyTB.Id";
 
             }
             else if (category==null && company!=null)

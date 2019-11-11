@@ -16,6 +16,10 @@ namespace StockManagementSystemWebAPP.UI
         ItemManager aItemManager = new ItemManager();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                Response.Redirect("LoginUI.aspx");
+            }
             if (!IsPostBack)
             {
                 List<Category> aList = aCategoryManager.AllCategory();
@@ -36,17 +40,37 @@ namespace StockManagementSystemWebAPP.UI
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             int quantity = 0;
+            int reorder = 0;
+            string itemname = itemTextBox.Text;
+            int companyId = Convert.ToInt32(CompanyDropDown.SelectedValue);
+            int categoryId = Convert.ToInt32(CategoryDropDown.SelectedValue);
+            if (reorderTextBox.Text.Equals(""))
+            {
+                reorder = 0;
+            }
+            else
+            {
+                 reorder = Convert.ToInt32(reorderTextBox.Text);
+            }
+           
             ItemClass aItemClass = new ItemClass();
-            aItemClass.Item_Name = itemTextBox.Text;
-            aItemClass.Category_Id = Convert.ToInt32(CategoryDropDown.SelectedValue);
-            aItemClass.Company_Id = Convert.ToInt32(CompanyDropDown.SelectedValue);
-            aItemClass.Quantity = quantity;
-            quantity += aItemClass.Quantity;
+            if (reorder > 0 && itemname.Length>0)
+            {
+                
+                aItemClass.Item_Name= itemTextBox.Text;
+                aItemClass.Category_Id = categoryId;
+                aItemClass.Company_Id = companyId;
+                aItemClass.Quantity = quantity;
+                quantity += aItemClass.Quantity;
+                aItemClass.Reorder = reorder;
 
-
-            aItemClass.Reorder = Convert.ToInt32(reorderTextBox.Text);
-
-           messageLabel.Text=aItemManager.Save(aItemClass);
+                messageLabel.Text = aItemManager.Save(aItemClass);
+            }
+            else
+            {
+                messageLabel.Text = "Fill All Information";
+            }
+            
         }
     }
 }

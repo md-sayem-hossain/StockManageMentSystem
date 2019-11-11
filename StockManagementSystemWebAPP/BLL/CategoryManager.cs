@@ -27,22 +27,32 @@ namespace StockManagementSystemWebAPP.BLL
         }
 
 
-        public string Update(int id,string name)
-        {
+        //public string Update(int id,string name)
+        //{
 
 
-            int Row = Gateway.Update(id,name);
-            if (Row > 0)
-            {
-                return "Update success";
-            }
-            return "failed";
-        }
+        //    int Row = Gateway.Update(id,name);
+        //    if (Row > 0)
+        //    {
+        //        return "Update success";
+        //    }
+        //    return "failed";
+        //}
 
         public List<Category> AllCategory()
         {
             return Gateway.GetCategories();
-        } 
+        }
 
+        public string Update(string name,int id)
+        {
+           
+            int Row = Gateway.UpdateCategory(name,id);
+            if (Row > 0)
+            {
+                return "Update success";
+            }
+            return "Update failed";
+        }
     }
 }

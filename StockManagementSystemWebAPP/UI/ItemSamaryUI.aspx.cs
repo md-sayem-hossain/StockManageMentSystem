@@ -35,7 +35,12 @@ namespace StockManagementSystemWebAPP.UI
 
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+       {
+           if (Session["user"] == null)
+           {
+               Response.Redirect("LoginUI.aspx");
+           }
+
             if (!IsPostBack)
             {
                 GetCompany();

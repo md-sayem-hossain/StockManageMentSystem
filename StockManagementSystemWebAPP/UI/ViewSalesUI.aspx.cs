@@ -14,7 +14,10 @@ namespace StockManagementSystemWebAPP.UI
         ViewSalesManager aViewSalesManager = new ViewSalesManager();
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["user"] == null)
+            {
+                Response.Redirect("LoginUI.aspx");
+            }
         }
 
         public void pageload(string date1,string date2)

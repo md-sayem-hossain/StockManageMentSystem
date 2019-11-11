@@ -21,10 +21,12 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
        
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            string query = "Update ItemTB  set Item_Quantity='"+newQuantity+"' where Item_Id= '"+id+"'";
+            string query = "Update ItemTB  set Item_Quantity=@newquantity where Item_Id=@id";
+            
             SqlCommand command = new SqlCommand(query, connection);
 
-
+            command.Parameters.AddWithValue("newquantity", newQuantity);
+            command.Parameters.AddWithValue("id", id);
             int rowAffect = command.ExecuteNonQuery();
             connection.Close();
 

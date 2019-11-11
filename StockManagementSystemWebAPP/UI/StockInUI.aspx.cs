@@ -26,6 +26,10 @@ namespace StockManagementSystemWebAPP.UI
         CompanyManager aCompanyManager = new CompanyManager();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                Response.Redirect("LoginUI.aspx");
+            }
             if (!IsPostBack)
             {
                 GetCompany();
@@ -85,16 +89,20 @@ namespace StockManagementSystemWebAPP.UI
        }
         protected void SaveButton_Click(object sender, EventArgs e)
         {
-
-            int id =  Convert.ToInt32(ItemDropDownList.SelectedItem.Value);
+            int id = 0;
+            
+            id =  Convert.ToInt32(ItemDropDownList.SelectedItem.Value);
+           
             int prequantity = Convert.ToInt32(AvailabelQuantityTextBox.Text);
             int newquantity = Convert.ToInt32(StockInTextBox.Text);
 
+           
+                StockInManager manager = new StockInManager();
+                string display = manager.Save(prequantity, newquantity, id);
 
-            StockInManager manager = new StockInManager();
-            string display = manager.Save(prequantity,newquantity,id);
+                messageLabel.Text = display;
 
-            messageLabel.Text = display;
+            
     }
 
 

@@ -14,6 +14,10 @@ namespace StockManagementSystemWebAPP.UI
         CompanyManager manager  = new CompanyManager();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                Response.Redirect("LoginUI.aspx");
+            }
             PageLoadPreview();
 
         }
@@ -30,10 +34,18 @@ namespace StockManagementSystemWebAPP.UI
         {
             string name = companyTextBox.Text;
             Company aCompany = new Company();
-            aCompany.Name = name;
+            if (name.Length > 1)
+            {
+                aCompany.Name = name;
 
-           messageLabel.Text=manager.Save(aCompany);
+             messageLabel.Text=manager.Save(aCompany);
             PageLoadPreview();
+            }
+            else
+            {
+                messageLabel.Text = "Enter Company Name";
+            }
+            
         }
     }
 }

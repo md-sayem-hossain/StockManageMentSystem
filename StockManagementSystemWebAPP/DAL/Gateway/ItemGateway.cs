@@ -45,8 +45,13 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
         {
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            string query = "INSERT INTO ItemTB VALUES('" + aItemClass.Item_Name + "','" + aItemClass.Reorder + "','" + aItemClass.Quantity + "','" + aItemClass.Category_Id + "','" + aItemClass.Company_Id + "')";
+            string query = "INSERT INTO ItemTB VALUES(@itemname,@reorder,@quantity,@categoryId,@companyId)";
             SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("itemname", aItemClass.Item_Name);
+            command.Parameters.AddWithValue("reorder", aItemClass.Reorder);
+            command.Parameters.AddWithValue("quantity", aItemClass.Quantity);
+            command.Parameters.AddWithValue("categoryId", aItemClass.Category_Id);
+            command.Parameters.AddWithValue("companyId", aItemClass.Company_Id);
 
 
             int rowAffect = command.ExecuteNonQuery();

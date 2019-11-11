@@ -40,6 +40,15 @@ namespace StockManagementSystemWebAPP.UI {
         protected global::System.Web.UI.WebControls.TextBox categoryTextBox;
         
         /// <summary>
+        /// messagelabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label messagelabel;
+        
+        /// <summary>
         /// SaveButton control.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,24 @@ namespace StockManagementSystemWebAPP.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SaveButton;
+        
+        /// <summary>
+        /// UpdateButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button UpdateButton;
+        
+        /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
         /// categoryGridview control.
@@ -58,12 +85,12 @@ namespace StockManagementSystemWebAPP.UI {
         protected global::System.Web.UI.WebControls.GridView categoryGridview;
         
         /// <summary>
-        /// messagelabel control.
+        /// idlabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label messagelabel;
+        protected global::System.Web.UI.WebControls.Label idlabel;
     }
 }

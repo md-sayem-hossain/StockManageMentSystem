@@ -40,6 +40,15 @@ namespace StockManagementSystemWebAPP.UI {
         protected global::System.Web.UI.WebControls.TextBox companyTextBox;
         
         /// <summary>
+        /// messageLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label messageLabel;
+        
+        /// <summary>
         /// SaveCompany control.
         /// </summary>
         /// <remarks>
@@ -56,14 +65,5 @@ namespace StockManagementSystemWebAPP.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView companyGridview;
-        
-        /// <summary>
-        /// messageLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label messageLabel;
     }
 }
