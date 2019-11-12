@@ -21,9 +21,8 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
             
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            string query = "INSERT INTO CategoryTB VALUES(@name)";
+            string query = "INSERT INTO CategoryTB VALUES('"+aCategory.Name+"')";
             SqlCommand command = new SqlCommand(query,connection);
-            command.Parameters.AddWithValue("name", aCategory.Name);
             int rowAffect = command.ExecuteNonQuery();
             connection.Close();
 
@@ -69,12 +68,12 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
 
             List<Category> CategoryList = new List<Category>();
 
+           
             while (reader.Read())
             {
                 Category aCategory = new Category();
                 aCategory.Name = reader["CategoryName"].ToString();
                 aCategory.Id = (int)reader["Id"];
-
                 CategoryList.Add(aCategory);
             }
 

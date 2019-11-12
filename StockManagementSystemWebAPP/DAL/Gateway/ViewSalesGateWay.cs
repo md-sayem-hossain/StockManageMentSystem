@@ -18,11 +18,11 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
 
         public List<ViewSalesModel> GetAllSales(string date1, string date2)
         {
-           
-           
 
-          
-               string   query = "SELECT  Item_Name,StockOut_Quantity from ItemTB,StockOutTB where StockOutTB.Date between '"+date1+"' and '"+date2+"' and ItemTB.Item_Id=StockOutTB.Item_Id";
+
+
+
+            string query = "SELECT  Item_Name,StockOut_Quantity from ADDItemTB,StockOutTB where StockOutTB.Date between '" + date1 + "' and '" + date2 + "' and ADDItemTB.Item_Id=StockOutTB.Item_Id";
 
 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -37,10 +37,10 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
 
 
             List<ViewSalesModel> aViewSale = new List<ViewSalesModel>();
-            int i = 1;
+
+            int id = 1;
 
             ViewSalesModel aViewSalesModel=null;
-
             while (reader.Read())
             {
                 aViewSalesModel = new ViewSalesModel();
@@ -48,9 +48,10 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
                 aViewSalesModel.Sale_Quantity = (int)reader["StockOut_Quantity"];
                
                 aViewSalesModel.Item_Name = reader["Item_Name"].ToString();
-                aViewSalesModel.Id = i;
+
+                aViewSalesModel.Id = id;
                 aViewSale.Add(aViewSalesModel);
-                i++;
+                id++;
             }
 
             reader.Close();

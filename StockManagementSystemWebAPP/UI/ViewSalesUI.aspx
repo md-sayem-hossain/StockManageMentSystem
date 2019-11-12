@@ -98,30 +98,40 @@
                                         <asp:Button ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click" CssClass="btn btn-primary"/>
                                     </div>
                                     <div>
-                                        <asp:GridView ID="SalesGridView" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="SalesGridView_SelectedIndexChanged" CssClass="table" HorizontalAlign="Justify">
+                                        <asp:GridView ID="SalesGridView" runat="server" AutoGenerateColumns="False" OnSelectedIndexChanged="SalesGridView_SelectedIndexChanged" CssClass="table" HorizontalAlign="Center" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black">
+                  
+                                            <AlternatingRowStyle BackColor="#CCCCCC" />
                   
                                     <Columns>
             
                                         <asp:TemplateField HeaderText="SL">
                                             <ItemTemplate >
-                                                <asp:Label ID="Label1" runat="server"><%#Eval("Id")%></asp:Label>
+                                                <asp:Label ID="Label1" CssClass="center"  runat="server"><%#Eval("Id")%></asp:Label>
                                             </ItemTemplate>
 
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Item">
                                             <ItemTemplate>
-                                                <asp:Label ID="Label1" runat="server"><%#Eval("Item_Name")%></asp:Label>
+                                                <asp:Label ID="Label1" CssClass="center" runat="server"><%#Eval("Item_Name")%></asp:Label>
                                             </ItemTemplate>
 
                                         </asp:TemplateField>
             
-                                         <asp:TemplateField HeaderText="Sale Quantity">
+                                         <asp:TemplateField HeaderText="Sale Quantity" >
                                             <ItemTemplate>
-                                                <asp:Label ID="Label1" runat="server"><%#Eval("Sale_Quantity")%></asp:Label>
+                                                <asp:Label ID="Label1" CssClass="center" runat="server"><%#Eval("Sale_Quantity")%></asp:Label>
                                             </ItemTemplate>
 
                                         </asp:TemplateField>
                                         </Columns>
+                                            <FooterStyle BackColor="#CCCCCC" />
+                                            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                                            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                            <SortedAscendingHeaderStyle BackColor="Gray" />
+                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                            <SortedDescendingHeaderStyle BackColor="#383838" />
                                         </asp:GridView>
                                     </div>
                                     <br/>
@@ -144,7 +154,7 @@
 			
 	</div>
     <!-- jQuery -->
-<%--	<script src="../js/jquery.min.js"></script>--%>
+	<%--<script src="../js/jquery.min.js"></script>--%>
 	<!-- jQuery Easing -->
 	<script src="../js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->

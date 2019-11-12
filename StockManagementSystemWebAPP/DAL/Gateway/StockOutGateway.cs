@@ -22,7 +22,7 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
                 string date = DateTime.Now.ToString("yyyy-MM-dd");
 
                 string query = "INSERT INTO StockOutTB VALUES(" + stockOut.Company_Id + "," + stockOut.Item_Id + "," + stockOut.StockOut_Value + ",'" + date + "','" + action + "')";
-                string update = "UPDATE ItemTB SET Item_Quantity=" + stockOut.AvailableQuantity + "WHERE Item_Id=" + stockOut.Item_Id;
+                string update = "UPDATE ADDItemTB SET Item_Quantity=" + stockOut.AvailableQuantity + "WHERE Item_Id=" + stockOut.Item_Id;
 
                 SqlCommand command = new SqlCommand(query, connection);
                 SqlCommand updateCommand = new SqlCommand(update, connection);

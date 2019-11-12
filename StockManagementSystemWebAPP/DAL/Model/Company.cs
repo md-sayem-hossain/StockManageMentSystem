@@ -11,5 +11,6 @@ namespace StockManagementSystemWebAPP.DAL.Model
 
         public string Name { get; set; }
         public int Id { get; set; }
+        public int SLNO { get; set; }
     }
 }

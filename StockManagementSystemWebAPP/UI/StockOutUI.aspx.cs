@@ -90,7 +90,7 @@ namespace StockManagementSystemWebAPP.UI
 
             if (get_CompanyName != "0")
             {
-                query = "Select Item_Id, Item_Name from ItemTB where Company_Id='" + get_CompanyName + "'";
+                query = "Select Item_Id, Item_Name from ADDItemTB where Company_Id='" + get_CompanyName + "'";
                 dataAdapter = new SqlDataAdapter(query, connection);
                 dataAdapter.Fill(dataSet);
                 if (dataSet.Tables[0].Rows.Count >= 0)
@@ -190,7 +190,7 @@ namespace StockManagementSystemWebAPP.UI
             string get_CompanyName = ItemDropDownList.SelectedItem.Value;
             connection.Open();
 
-            query = "Select Item_Reorder, Item_Quantity from ItemTB where Item_Id='" + get_CompanyName + "'";
+            query = "Select Item_Reorder, Item_Quantity from ADDItemTB where Item_Id='" + get_CompanyName + "'";
             command = new SqlCommand(query, connection);
 
             DataTable dt = new DataTable();

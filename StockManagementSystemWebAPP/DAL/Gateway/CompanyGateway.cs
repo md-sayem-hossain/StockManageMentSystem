@@ -71,7 +71,6 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
                 Company aCompany = new Company();
                 aCompany.Name = reader["CompanyName"].ToString();
                 aCompany.Id = (int)reader["Id"];
-
                 CompanyList.Add(aCompany);
             }
 

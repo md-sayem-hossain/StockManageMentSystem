@@ -31,22 +31,22 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
             }
             else if (category!=null && company!=null)
             {
-                query = "SELECT  CompanyName ,CategoryName,Item_Name,Item_Quantity,Item_Reorder from ItemTB," +
-                        "CompanyTB,CategoryTB where ItemTB.Category_Id=CategoryTB.Id and " +
-                        "CategoryTB.CategoryName='" + category + "' and ItemTB.Company_Id=CompanyTB.Id and " +
-                        " CompanyTB.CompanyName='" + company + "' and ItemTB.Category_Id=CategoryTB.Id";
+                query = "SELECT  CompanyName ,CategoryName,Item_Name,Item_Quantity,Item_Reorder from ADDItemTB," +
+                        "CompanyTB,CategoryTB where ADDItemTB.Category_Id=CategoryTB.Id and " +
+                        "CategoryTB.CategoryName='" + category + "' and ADDItemTB.Company_id=CompanyTB.Id and " +
+                        " CompanyTB.CompanyName='" + company + "' and ADDItemTB.Category_Id=CategoryTB.Id";
 
             }
             else if (category!=null && company==null)
             {
                 query = "SELECT  CompanyName ,CategoryName,Item_Name,Item_Quantity,Item_Reorder from " +
-                        "ItemTB,CompanyTB,CategoryTB where ItemTB.Category_Id=CategoryTB.Id and " +
-                        "CategoryTB.CategoryName='" + category + "' and ItemTB.Company_Id=CompanyTB.Id";
+                        "ADDItemTB,CompanyTB,CategoryTB where ADDItemTB.Category_Id=CategoryTB.Id and " +
+                        "CategoryTB.CategoryName='" + category + "' and ADDItemTB.Company_Id=CompanyTB.Id";
 
             }
             else if (category==null && company!=null)
             {
-                query = "SELECT  CompanyName ,CategoryName,Item_Name,Item_Quantity,Item_Reorder from ItemTB,CompanyTB,CategoryTB where ItemTB.Company_Id=CompanyTB.Id and CompanyTB.CompanyName='" + company + "' and ItemTB.Category_Id=CategoryTB.Id";
+                query = "SELECT  CompanyName ,CategoryName,Item_Name,Item_Quantity,Item_Reorder from ADDItemTB,CompanyTB,CategoryTB where ADDItemTB.Company_Id=CompanyTB.Id and CompanyTB.CompanyName='" + company + "' and ADDItemTB.Category_Id=CategoryTB.Id";
             }
 
 
@@ -60,21 +60,21 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
 
             SqlDataReader reader = command.ExecuteReader();
 
-
+            int id = 1;
             List<SumurryModel> SumurryModel = new List<SumurryModel>();
-            int i = 1;
 
+         
             while (reader.Read())
             {
+                aSumurryModel.Id = id;
                 aSumurryModel = new SumurryModel();
                 aSumurryModel.CategoryName = reader["CategoryName"].ToString();
                 aSumurryModel.CompanyName = reader["CompanyName"].ToString();
                 aSumurryModel.AvailableQuanatity = (int) reader["Item_Quantity"];
                 aSumurryModel.ReorderLabel = (int) reader["Item_Reorder"];
                 aSumurryModel.item = reader["Item_Name"].ToString();
-                aSumurryModel.Id = i;
                 SumurryModel.Add(aSumurryModel);
-                i++;
+                id++;
             }
 
             reader.Close();

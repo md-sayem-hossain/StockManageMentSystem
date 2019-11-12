@@ -21,7 +21,7 @@ namespace StockManagementSystemWebAPP.DAL.Gateway
        
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
-            string query = "Update ItemTB  set Item_Quantity=@newquantity where Item_Id=@id";
+            string query = "Update ADDItemTB  set Item_Quantity=@newquantity where Item_Id=@id";
             
             SqlCommand command = new SqlCommand(query, connection);
 
